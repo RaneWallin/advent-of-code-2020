@@ -12,7 +12,7 @@
   )
 
 ; View read and converted report
-(defn printReport
+(defn print-report
   []
   (println report))
 
@@ -22,30 +22,30 @@
   [vals total]
   (loop
       [[cur & tail] vals
-       result ()]
-    (if (not (empty? result))
-      result 
-      (if (has-val (- total cur) tail)
-        (recur tail (list cur (- total cur)))
-        (if (empty? tail) nil  (recur tail ()))
-       ))
-     )
-  )
+       result {0 0}]
+      (if (empty? tail)
+        nil
+        (if (nil? (get result (- total cur) nil))
+          (recur tail (assoc result cur (- total cur)))
+          (list (- total  cur) (get result (- total cur)))))
+      ))
+  
+  
 
-(defn find-three
-  "Accepts a seq of `vals` and finds three values that sum to `total`
+  (defn find-three
+    "Accepts a seq of `vals` and finds three values that sum to `total`
    using [[find-two]]"
-  [vals total]
-  (loop
-      [[cur & tail] vals
-       result ()]
-    (if (not (empty? result))
-      result
-      (if (nil? (find-two tail (- total cur)))
-        (recur tail result)
-        (recur tail
-               (cons cur (find-two tail (- total cur))))
-        ))))
+    [vals total]
+    (loop
+        [[cur & tail] vals
+         result ()]
+      (if (not (empty? result))
+        result
+        (if (nil? (find-two tail (- total cur)))
+          (recur tail result)
+          (recur tail
+                 (cons cur (find-two tail (- total cur))))
+          ))))
 
 
 
