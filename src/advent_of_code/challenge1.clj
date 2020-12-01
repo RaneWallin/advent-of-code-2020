@@ -22,12 +22,12 @@
   [vals total]
   (loop
       [[cur & tail] vals
-       result {0 0}]
+       result {}]
       (if (empty? tail)
         nil
         (if (nil? (get result (- total cur) nil))
           (recur tail (assoc result cur (- total cur)))
-          (list (- total  cur) (get result (- total cur)))))
+          (list (- total  cur) cur)))
       ))
   
   
