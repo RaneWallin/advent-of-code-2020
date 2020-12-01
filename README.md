@@ -1,32 +1,8 @@
 # advent-of-code
 
-FIXME: description
+## Solutions for Advent of Code 2020
 
-## Installation
-
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar advent-of-code-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+I am learning Clojure, so I decided to do these in Clojure. If you have feedback, feel free to send it on.
 
 ## License
 
