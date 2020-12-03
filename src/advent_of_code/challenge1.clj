@@ -32,28 +32,27 @@
   
   
 
-  (defn find-three
-    "Accepts a seq of `vals` and finds three values that sum to `total`
+(defn find-three
+  "Accepts a seq of `vals` and finds three values that sum to `total`
    using [[find-two]]"
-    [vals total]
-    (loop
-        [[cur & tail] vals
-         result ()]
-      (if (not (empty? result))
-        result
-        (if (nil? (find-two tail (- total cur)))
-          (recur tail result)
-          (recur tail
-                 (cons cur (find-two tail (- total cur))))
-          ))))
-
-
+  [vals total]
+  (loop
+      [[cur & tail] vals
+       result ()]
+    (if (not (empty? result))
+      result
+      (if (nil? (find-two tail (- total cur)))
+        (recur tail result)
+        (recur tail
+               (cons cur (find-two tail (- total cur))))
+        ))))
 
 (defn get-mult
   "Takes a seq `vals` and returns the product"
   [vals]
   (reduce * vals))
 
+; No longer used, but keeping for posterity 
 (defn has-val?
   "Searches a collection `col` to see if it contains `search`"
   [search coll]
