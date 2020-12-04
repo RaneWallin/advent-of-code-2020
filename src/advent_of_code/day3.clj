@@ -2,7 +2,6 @@
 
 (def filename "day3.txt")
 (def tree "#")
-(def offset 3)
 
 (def tree-vec
   (vec (vec
