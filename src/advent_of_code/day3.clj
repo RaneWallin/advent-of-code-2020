@@ -4,8 +4,6 @@
 (def tree "#")
 (def offset 3)
 
-(def slopes '((1 1) (3 1) (5 1) (7 1) (1 2)))
-
 (def tree-vec
   (vec (vec
         (map
@@ -33,9 +31,6 @@
   (loop
       [trees 0
        y 0]
-    (println "y: " y
-             "x: " (convert-x (get-x y x-offset y-offset))
-           "tree: " (= (get (get tree-vec y) (convert-x (get-x y x-offset y-offset))) tree ))
     (if (> y length)
       trees 
       (recur
