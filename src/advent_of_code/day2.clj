@@ -1,22 +1,29 @@
 (require '[clojure.string :as string])
-(declare read-input split-on-colon
+(declare get-input split-on-colon
          clean-data build-map get-req-map
-         split-on-newline)
+         split-on-newline my-xor
+         new-valid-pw? valid-pw?
+         count-matches)
 
 (def filename "day2.txt")
 
-
 (def pw-data
-   (clean-data (read-input)))
+  (clean-data (slurp filename)))
+
+(defn clean-data
+  [input]
+   (map #(build-map %)
+        (map #(split-on-colon %)
+             (split-on-newline input))))
 
 (defn find-valids
   [pw-list]
   (reduce
    (fn [count cur]
-     (if (valid-pw? cur)
+     (if (new-valid-pw? cur)
        (inc count)
        count)) 0 pw-list))
-
+ 
 (defn valid-pw?
   [pw-map]
   (def req-match
@@ -25,15 +32,19 @@
   (and (<= req-match (get pw-map :max))
        (>= req-match (get pw-map :min))))
 
-(defn clean-data
-  [input]
-   (map #(build-map %)
-        (map #(split-on-colon %)
-             (split-on-newline input))))
+(defn new-valid-pw?
+  [pw-map]
+  (my-xor
+   (= (nth (get pw-map :req) 0)
+      (nth (get pw-map :pw) (dec (get pw-map :min))))
+   (= (nth (get pw-map :req) 0)
+      (nth (get pw-map :pw) (dec (get pw-map :max))))
+   ))
 
-(defn read-input
-  []
-  (slurp filename))
+(defn my-xor
+  [pred1 pred2]
+  (or (and pred1 (not pred2))
+      (and (not pred1) pred2)))
 
 (defn split-on-colon
   [input]
