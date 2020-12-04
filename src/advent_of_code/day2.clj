@@ -36,10 +36,11 @@
   [pw-map]
   (my-xor
    (= (nth (get pw-map :req) 0)
-      (nth (get pw-map :pw) (dec (get pw-map :min))))
+      (nth (get pw-map :pw)
+           (dec (get pw-map :min))))
    (= (nth (get pw-map :req) 0)
-      (nth (get pw-map :pw) (dec (get pw-map :max))))
-   ))
+      (nth (get pw-map :pw)
+           (dec (get pw-map :max))))))
 
 (defn my-xor
   [pred1 pred2]
