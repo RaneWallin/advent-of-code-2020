@@ -16,7 +16,7 @@
 (def width (count (get tree-vec 0)))
 (def length (count tree-vec))
 
-(defn get-xy
+(defn get-x
   [y x-offset y-offset]
   (int  (* (/  x-offset y-offset) y)))
 
