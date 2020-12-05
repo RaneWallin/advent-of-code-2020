@@ -1,5 +1,7 @@
 (ns advent-of-code.core
-  (:gen-class))
+  (:require [advent-of-code.day5 :refer :all])
+  (:gen-class) 
+ )
 
 (defn -main
   "I don't do a whole lot ... yet."
