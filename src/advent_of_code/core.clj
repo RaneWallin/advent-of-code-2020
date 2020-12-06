@@ -1,5 +1,4 @@
 (ns advent-of-code.core
-  (:require [advent-of-code.day5 :refer :all])
   (:gen-class) 
  )
 

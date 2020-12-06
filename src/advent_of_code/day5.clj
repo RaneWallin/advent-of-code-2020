@@ -76,13 +76,11 @@
   (loop [seats (sort  (map #(get-id (find-seat %)) seat-data))
          my-seat nil
          last-seat nil]
-    (if (not (nil? my-seat))
-      my-seat
       (if (nil? last-seat)
         (recur (rest seats) my-seat (first seats))
         (if (not (= (- (nth seats 0) last-seat) 1))
           (- (nth seats 0) 1)
-          (recur (rest seats) my-seat (first seats)))))))
+          (recur (rest seats) my-seat (first seats))))))
 
 ;; (defn find-my-seat
 ;;   [in-seats]
