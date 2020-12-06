@@ -54,14 +54,6 @@
   [answers]
   (->> 
    (map #(into [] [(count %) (combine-answers %)]) answers)
-   ;; (map #(into [] [%1
-   ;;                 (reduce (fn  [ans-map ans]
-   ;;                           (if (nil? (get ans-map ans))
-   ;;                             (into ans-map {ans 1})
-   ;;                             (into ans-map
-   ;;                                   {ans
-   ;;                                    (inc (get ans-map ans))}))
-   ;;                           ) {} %2)]))
    (map #(into [] [(first %) (char-map (nth % 1))]))
    (map #(reduce
           (fn [ans-sum item]
